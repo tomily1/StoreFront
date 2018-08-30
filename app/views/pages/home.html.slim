@@ -1,5 +1,5 @@
 .container
   .row
-    - (0..4).each do |i|
-      = render partial: "pages/product"
-= render partial: "pages/product_details"
+    - @products.each do |product|
+      = render partial: "pages/product", locals: { product: product}
+      = render partial: "pages/product_details", locals: { product: product}

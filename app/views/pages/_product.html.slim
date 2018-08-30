@@ -2,10 +2,10 @@
   .thumbnail
     img.img-responsive alt="" src="http://tech.firstpost.com/wp-content/uploads/2014/09/Apple_iPhone6_Reuters.jpg"
     .caption
-      h4.pull-right $700.99
+      h4.pull-right = number_to_currency(product.price)
       h4
-        a href="#"  Mobile Product
-      p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+        a href="#" = product.name
+      p = product.details
     .ratings
       p
         i.fa.fa-star
@@ -19,7 +19,8 @@
       button.btn.btn-primary type="button"
         i.fa.fa-shopping-cart
         | Add To Cart
-      button.btn.btn-primary data-target="#product_view" data-toggle="modal" type="button" style="margin-left: 20px;"
+      button.btn.btn-primary data-target="#product-#{product.id}" data-toggle="modal" type="button" style="margin-left: 20px;"
         i.fa.fa-search
         | Quick View
     .space-ten
+      / Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.

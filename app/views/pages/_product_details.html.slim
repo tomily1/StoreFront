@@ -1,10 +1,10 @@
-#product_view.modal.fade.product_view
+div.modal.fade.product_view(id="product-#{product.id}")
   .modal-dialog
     .modal-content
       .modal-header
         a.class.pull-right data-dismiss="modal" href="#"
           span.glyphicon.glyphicon-remove
-        h3.modal-title HTML5 is a markup language
+        h3.modal-title.text-center Product Details
       .modal-body
         .row
           .col-md-6.product_img
@@ -12,7 +12,7 @@
           .col-md-6.product_content
             h4
               | Product Id:
-              span 51526
+              span = product.id
             .rating
               span.glyphicon.glyphicon-star
               span.glyphicon.glyphicon-star
@@ -20,42 +20,14 @@
               span.glyphicon.glyphicon-star
               span.glyphicon.glyphicon-star
               | (10 reviews)
-            p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            p = product.details
             h3.cost
-              span.glyphicon.glyphicon-usd
-              | 75.00
+              span.glyphicon.glyphicon-usd = number_to_currency(product.price)
               small.pre-cost
                 span.glyphicon.glyphicon-usd
                 | 60.00
-            .row
-              .col-md-4.col-sm-6.col-xs-12
-                select.form-control name="select"
-                  option selected="selected" value=""  Color
-                  option value="black"  Black
-                  option value="white"  White
-                  option value="gold"  Gold
-                  option value=("rose gold")  Rose Gold
-              /! end col
-              .col-md-4.col-sm-6.col-xs-12
-                select.form-control name="select"
-                  option value=""  Capacity
-                  option value=""  16GB
-                  option value=""  32GB
-                  option value=""  64GB
-                  option value=""  128GB
-              /! end col
-              .col-md-4.col-sm-12
-                select.form-control name="select"
-                  option selected="selected" value=""  QTY
-                  option value=""  1
-                  option value=""  2
-                  option value=""  3
-            /! end col
             .space-ten
             .btn-ground
               button.btn.btn-primary type="button"
                 span.glyphicon.glyphicon-shopping-cart
                 | Add To Cart
-              button.btn.btn-primary type="button"
-                span.glyphicon.glyphicon-heart
-                | Add To Wishlist
