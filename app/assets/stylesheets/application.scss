@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+@import 'bootstrap';
+@import "font-awesome";
+@import "./authentication";
+
+body {
+  background-color: #EFEFEF;
+}
+.container {
+  margin-top: 20px;
+}
