@@ -1,0 +1,14 @@
+development:
+  adapter: postgresql
+  database: storefront_dev
+  host: localhost
+  min_messages: WARNING
+
+test:
+  adapter: postgresql
+  database: storefront_test
+  host: localhost
+  min_messages: WARNING
+
+production:
+  min_messages: WARNING
