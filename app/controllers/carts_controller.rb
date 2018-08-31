@@ -15,6 +15,17 @@ class CartsController < ApplicationController
     end
   end
 
+  def update
+    item = params.permit(:quantity, :id)
+    commands = Commands::UpdateCart.new(item)
+
+    if commands.execute
+      redirect_to carts_path, notice: "Cart updated"
+    else
+      redirect_to carts_path, alert: "Unable to update cart"
+    end
+  end
+
   def destroy
   end
 

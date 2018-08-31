@@ -9,7 +9,7 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark role="navigation"
           = link_to("Create Product", new_product_path, class: "text-white")
       ul.nav.navbar-nav.flex-row.justify-content-between.ml-auto
         li.nav-item(style="margin-left: 5px;")
-          a.text-white#cart href="#"
+          = link_to(carts_path, class: "text-white", id: "cart") do
             i.fa.fa-2x.fa-shopping-cart
             | Cart
             span.badge #{cart.nil? ? 0 : cart.carts.count}

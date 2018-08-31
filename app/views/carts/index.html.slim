@@ -1,0 +1,24 @@
+.container
+  - cart.carts.each do |cart|
+    .card.spaced
+      .card-body
+        .row
+          .col-3
+            img.img-responsive alt="" src="http://tech.firstpost.com/wp-content/uploads/2014/09/Apple_iPhone6_Reuters.jpg"
+          .col-9
+            h4 Details
+            p = cart.product.details
+            br
+            p
+              span Price: &nbsp;
+              span = number_to_currency(cart.product.price)
+            span Quantity: &nbsp;
+            = cart.quantity
+            = form_with url: cart_path(cart.id), method: :put, remote: true do |form|
+              = form.text_field :quantity, value: cart.quantity, type: "number", min: 1
+              span &nbsp;
+              = form.submit "Apply", class: "btn btn-primary"
+            = link_to("Remove Item", carts_path(cart_id: cart.id), method: :delete, remote: true)
+  .card
+    .card-body
+      .row
