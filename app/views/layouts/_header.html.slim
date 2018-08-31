@@ -1,12 +1,15 @@
 nav.navbar.navbar-expand-lg.navbar-dark.bg-dark role="navigation"
   .container
-    a.navbar-brand href="#" StoreFront
+    a.navbar-brand href="/" StoreFront
     button.navbar-toggler.border-0 data-target="#exCollapsingNavbar" data-toggle="collapse" type="button" 
       | ☰
     #exCollapsingNavbar.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li.nav-item
+          = link_to("Create Product", new_product_path, class: "text-white")
       ul.nav.navbar-nav.flex-row.justify-content-between.ml-auto
         li.nav-item(style="margin-left: 5px;")
           a.text-white#cart href="#"
             i.fa.fa-2x.fa-shopping-cart
             | Cart
-            span.badge #{cart.nil? ? 0 : cart.count}
+            span.badge #{cart.nil? ? 0 : cart.carts.count}

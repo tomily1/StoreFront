@@ -16,9 +16,10 @@
         | (15 reviews)
     .space-ten
     .btn-ground.text-center
-      .row.text-center
+      .row.text-center.justify-content-center
         = form_with url: carts_path, method: :post, remote: true do |form|
           = form.hidden_field :product, value: product.id
+          = form.hidden_field :quantity, value: 1
           button.btn.btn-primary type="submit"
             i.fa.fa-shopping-cart
             | Add To Cart

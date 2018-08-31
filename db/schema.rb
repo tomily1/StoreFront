@@ -16,11 +16,11 @@ ActiveRecord::Schema.define(version: 2018_08_30_162953) do
   enable_extension "plpgsql"
 
   create_table "carts", force: :cascade do |t|
-    t.bigint "user_orders_id", null: false
+    t.bigint "user_order_id", null: false
     t.bigint "product_id", null: false
-    t.integer "quantity", default: 1
+    t.integer "quantity", default: 0
     t.index ["product_id"], name: "index_carts_on_product_id"
-    t.index ["user_orders_id"], name: "index_carts_on_user_orders_id"
+    t.index ["user_order_id"], name: "index_carts_on_user_order_id"
   end
 
   create_table "delivery_methods", force: :cascade do |t|
@@ -49,6 +49,6 @@ ActiveRecord::Schema.define(version: 2018_08_30_162953) do
   end
 
   add_foreign_key "carts", "products"
-  add_foreign_key "carts", "user_orders", column: "user_orders_id"
+  add_foreign_key "carts", "user_orders"
   add_foreign_key "user_orders", "delivery_methods"
 end

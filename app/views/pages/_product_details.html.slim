@@ -1,33 +1,38 @@
 div.modal.fade.product_view(id="product-#{product.id}")
   .modal-dialog
     .modal-content
-      .modal-header
+      .modal-header.justify-content-center
         a.class.pull-right data-dismiss="modal" href="#"
           span.glyphicon.glyphicon-remove
-        h3.modal-title.text-center Product Details
+        h3.modal-title Product Details
       .modal-body
         .row
           .col-md-6.product_img
             img.img-responsive src="http://img.bbystatic.com/BestBuy_US/images/products/5613/5613060_sd.jpg" /
           .col-md-6.product_content
             h4
-              | Product Id:
+              | Product id:
               span = product.id
+            br
+            h4
+              span = product.name
             .rating
-              span.glyphicon.glyphicon-star
-              span.glyphicon.glyphicon-star
-              span.glyphicon.glyphicon-star
-              span.glyphicon.glyphicon-star
-              span.glyphicon.glyphicon-star
-              | (10 reviews)
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              i.fa.fa-star
+              | (15 reviews)
             p = product.details
             h3.cost
-              span.glyphicon.glyphicon-usd = number_to_currency(product.price)
-              small.pre-cost
-                span.glyphicon.glyphicon-usd
-                | 60.00
-            .space-ten
-            .btn-ground
-              button.btn.btn-primary type="button"
-                span.glyphicon.glyphicon-shopping-cart
-                | Add To Cart
+              span = number_to_currency(product.price)
+            = form_with url: carts_path, method: :post, remote: true do |form|
+              = form.hidden_field :product, value: product.id
+              span.quantity Quantity
+              = form.text_field :quantity, class: "form-control", type: "number", min: "1", value: 1
+
+              .space-ten
+              .btn-ground
+                button.btn.btn-primary type="submit"
+                  span.glyphicon.glyphicon-shopping-cart
+                  | Add To Cart

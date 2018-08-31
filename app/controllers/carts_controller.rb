@@ -5,8 +5,14 @@ class CartsController < ApplicationController
   end
 
   def create
-    item = params.permit(:product)
-    Commands::AddToCart.new(cart.id, item)
+    item = params.permit(:product, :quantity)
+    commands = Commands::AddToCart.new(cart.id, item[:product], item[:quantity])
+
+    if commands.execute
+      redirect_to root_path, notice: "Product added to cart"
+    else
+      redirect_to root_path, alert: "Unable to add product"
+    end
   end
 
   def destroy
@@ -15,10 +21,10 @@ class CartsController < ApplicationController
   private
 
   def setup_user_order
-    create_pending_order if pending_order.nil?
+    create_pending_order if cart.nil?
   end
 
   def create_pending_order
-    UserOrder.create!(user_id: current_user)
+    UserOrder.create!(session_id: current_user)
   end
 end
