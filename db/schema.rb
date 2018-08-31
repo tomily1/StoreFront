@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2018_08_30_162953) do
   create_table "delivery_methods", force: :cascade do |t|
     t.string "name", null: false
     t.money "price", scale: 2, null: false
-    t.boolean "enabled", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 2018_08_30_162953) do
   create_table "user_orders", force: :cascade do |t|
     t.string "session_id"
     t.bigint "delivery_method_id"
-    t.datetime "date_order_placed"
     t.datetime "date_order_paid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

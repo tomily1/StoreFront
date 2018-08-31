@@ -18,7 +18,7 @@
             .col-3
               = label_tag "Size"
             = form.select :size,
-                    [1, 2, 3],
+                    %w[L M XL XXL NA],
                     { include_blank: "Please choose" },
                     { class: "form-control", required: true }
           .form-group.row
