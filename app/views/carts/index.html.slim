@@ -22,8 +22,15 @@
               = link_to("Remove Item", cart_path(cart.id), method: :delete, remote: true)
     .card
       .card-body
-        .row
-          h3 Select shipping method
+        h4 Select shipping method
+        .form
+          = form_with url: user_order_path(cart.id), method: :put, remote: true do |form|
+            .form-group
+              = form.select :name,
+                      @delivery_methods.map { |m| m.name },
+                      { include_blank: "Please choose", selected: cart.delivery_method.try(:name) },
+                      { class: "form-control", required: true, onchange: "$(this).closest('form').submit()" }
+    br
     .card
       .card-body
         .row
@@ -34,11 +41,18 @@
                 th Tax
                 th Shipping method
                 th Total
+                th
             tbody
               tr
                 td #{number_to_currency(@product_price)}
                 td #{number_to_currency(tax(@product_price))}
-                td $10
+                - if cart.delivery_method_id.present?
+                  td = number_to_currency(cart.delivery_method.price)
+                  td = number_to_currency(@total)
+                  td = link_to(user_order_payment_path(cart.id), method: :post, class: "btn btn-primary") do
+                    | Make Payment
+                - else
+                  td Choose shipping options
 
   - else
     .card

@@ -1,0 +1,31 @@
+.container
+  h5.margin-right Create shipping method
+  div
+    .form
+      = form_with url: delivery_methods_path, method: :post, remote: true do |form|
+        = label_tag "Name: "
+        = form.text_field :name, placeholder: "Name"
+        span &nbsp;
+        = label_tag "Price: "
+        = form.text_field :price, type: "number", placeholder: "Price", required: true, step: ".01", min: 1
+        span &nbsp;
+        = form.submit "Save", class: "btn btn-primary"
+  br
+  - if @delivery_methods.count > 0
+    .row
+      table.table.table-striped
+        thead
+          tr
+            th Name
+            th Price
+            th Action
+        tbody
+          - @delivery_methods.each do |m|
+            tr
+              td = m.name
+              td = number_to_currency(m.price)
+              td = link_to("Delete", delivery_method_path(m.id), method: :delete, remote: true)
+  - else
+    .row
+      .text-center
+        h3 No Shipping method available
