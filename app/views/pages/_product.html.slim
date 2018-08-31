@@ -20,7 +20,7 @@
         = form_with url: carts_path, method: :post, remote: true do |form|
           = form.hidden_field :product, value: product.id
           = form.hidden_field :quantity, value: 1
-          button.btn.btn-primary type="submit"
+          button.btn.btn-primary.add-to-cart type="submit"
             i.fa.fa-shopping-cart
             | Add To Cart
         button.btn.btn-primary data-target="#product-#{product.id}" data-toggle="modal" type="button" style="margin-left: 20px;"
