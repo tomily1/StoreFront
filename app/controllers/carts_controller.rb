@@ -1,7 +1,10 @@
 class CartsController < ApplicationController
+  include ProductsHelper
+  helper_method :tax
   before_action :setup_user_order
 
   def index
+    @product_price = cart.products.pluck(:price).sum
   end
 
   def create
@@ -27,6 +30,13 @@ class CartsController < ApplicationController
   end
 
   def destroy
+    cart = Cart.find_by_id(params[:id])
+
+    if cart.destroy
+      redirect_to carts_path, notice: "item removed"
+    else
+      redirect_to carts_path, alert: "Unable to remove item from cart"
+    end
   end
 
   private
