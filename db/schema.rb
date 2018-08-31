@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2018_08_30_162953) do
   create_table "carts", force: :cascade do |t|
     t.bigint "user_orders_id", null: false
     t.bigint "product_id", null: false
+    t.integer "quantity", default: 1
     t.index ["product_id"], name: "index_carts_on_product_id"
     t.index ["user_orders_id"], name: "index_carts_on_user_orders_id"
   end
@@ -38,24 +39,16 @@ ActiveRecord::Schema.define(version: 2018_08_30_162953) do
   end
 
   create_table "user_orders", force: :cascade do |t|
-    t.bigint "user_id", null: false
+    t.string "session_id"
     t.bigint "delivery_method_id"
-    t.datetime "date_order_placed", null: false
+    t.datetime "date_order_placed"
     t.datetime "date_order_paid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["delivery_method_id"], name: "index_user_orders_on_delivery_method_id"
-    t.index ["user_id"], name: "index_user_orders_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "carts", "products"
   add_foreign_key "carts", "user_orders", column: "user_orders_id"
   add_foreign_key "user_orders", "delivery_methods"
-  add_foreign_key "user_orders", "users"
 end

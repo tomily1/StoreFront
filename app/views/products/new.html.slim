@@ -1,0 +1,36 @@
+.container
+  .row.text-center
+    h4.full-width Add Product
+  .row
+    .col-2
+    .col-8
+      .form.full-width
+        = form_with url: products_path, method: :post do |form|
+          .form-group.row
+            .col-3
+              = label_tag "Name"
+            = form.text_field :name, class: "form-control", placeholder: "Product name", required: true
+          .form-group.row
+            .col-3
+              = label_tag "Details"
+            = form.text_area :details, class: "form-control", placeholder: "Product details", required: true
+          .form-group.row
+            .col-3
+              = label_tag "Size"
+            = form.select :size,
+                    [1, 2, 3],
+                    { include_blank: "Please choose" },
+                    { class: "form-control", required: true }
+          .form-group.row
+            .col-3
+              = label_tag "Price"
+            = form.text_field :price,
+                    class: "form-control",
+                    type: "number",
+                    placeholder: "price",
+                    required: true,
+                    step: ".01",
+                    min: "0"
+          .form-group.text-center
+            = form.submit "Create Product", class: "btn btn-primary"
+

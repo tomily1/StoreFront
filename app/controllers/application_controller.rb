@@ -1,21 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :signed_in_user?
+  helper_method :current_user, :cart
 
   private
 
   def current_user
-    return unless signed_in_user?
-    @current_user ||= User.find(session[:user_id])
-  rescue ActiveRecord::RecordNotFound
-    reset_session
+    @current_user = session[:session_id]
   end
 
-  def sign_in_user!(user)
-    session[:user_id] = user.id
-  end
-
-  def signed_in_user?
-    session[:user_id].present?
+  def cart
+    @cart = UserOrder.where(session_id: current_user, date_order_paid: nil).first
   end
 end

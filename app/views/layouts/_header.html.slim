@@ -5,24 +5,8 @@ nav.navbar.navbar-expand-lg.navbar-dark.bg-dark role="navigation"
       | ☰
     #exCollapsingNavbar.collapse.navbar-collapse
       ul.nav.navbar-nav.flex-row.justify-content-between.ml-auto
-        - if signed_in_user?
-          li.nav-item
-            a(href="#" class="text-white") Logout
-        - else
-          li.dropdown
-            button#dropdownMenu1.btn.btn-outline-secondary.dropdown-toggle data-toggle="dropdown" type="button"
-              | Login
-              span.caret
-            ul.dropdown-menu.dropdown-menu-right.mt-3.login
-              li.px-3.py-2
-                form.form role="form"
-                = form_with url: authentications_path do |form|
-                  .form-group
-                    = form.text_field :email, required: true, class: "form-control form-control-sm", placeholder: "Email"
-                  .form-group
-                    = form.submit "Login", class: "btn btn-primary btn-block"
         li.nav-item(style="margin-left: 5px;")
           a.text-white#cart href="#"
             i.fa.fa-2x.fa-shopping-cart
             | Cart
-            span.badge 3
+            span.badge #{cart.nil? ? 0 : cart.count}
