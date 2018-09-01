@@ -1,7 +1,5 @@
 class ProductsController < ApplicationController
-
-  def new
-  end
+  def new; end
 
   def create
     command = Commands::CreateProduct.new(product_params)

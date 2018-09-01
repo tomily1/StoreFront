@@ -1,0 +1,25 @@
+AllCops:
+  TargetRubyVersion: 2.5.1
+  Exclude:
+    - "db/**/*"
+    - "bin/**/*"
+    - ".rubocop.yml"
+    - "vendor/"
+    - "public/"
+    - "config/**/*"
+    - "lib/**/*"
+    - "log/"
+    - "vendor/**/*"
+    - "vendor/**/.*"
+    - "node_modules/**/*"
+    - "spec/**/*"
+Documentation:
+  Enabled: false
+Metrics/MethodLength:
+  Max: 20
+Metrics/AbcSize:
+  Max: 20
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
