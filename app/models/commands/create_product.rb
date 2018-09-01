@@ -10,10 +10,10 @@ module Commands
 
     def execute
       Product.create(
-          name: name,
-          details: details,
-          size: size,
-          price: price
+        name: name,
+        details: details,
+        size: size,
+        price: price
       )
       true
     end

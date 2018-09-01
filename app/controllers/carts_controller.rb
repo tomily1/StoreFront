@@ -6,7 +6,7 @@ class CartsController < ApplicationController
   def index
     @product_price = cart.products.pluck(:price).sum * cart.products.pluck(:quantity).sum
     @delivery_methods = DeliveryMethod.all
-    @total =  [@product_price, tax(@product_price), cart.delivery_method.price].sum if cart.delivery_method_id.present?
+    @total = [@product_price, tax(@product_price), cart.delivery_method.price].sum if cart.delivery_method_id.present?
   end
 
   def create

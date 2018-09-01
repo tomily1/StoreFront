@@ -1,5 +1,4 @@
 class DeliveryMethodsController < ApplicationController
-
   def index
     @delivery_methods = DeliveryMethod.all
   end
