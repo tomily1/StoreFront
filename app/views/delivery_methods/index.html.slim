@@ -24,7 +24,10 @@
             tr
               td = m.name
               td = number_to_currency(m.price)
-              td = link_to("Delete", delivery_method_path(m.id), method: :delete, remote: true)
+              - if m.user_orders.present?
+                td Cannot Delete
+              - else
+                td = link_to("Delete", delivery_method_path(m.id), method: :delete, remote: true)
   - else
     .row
       .text-center
