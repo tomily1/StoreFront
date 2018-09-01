@@ -50,7 +50,6 @@ RSpec.describe "Orders" do
     find(".quick-view-add").click
     wait_for_ajax
     visit "/carts"
-    expect(page.body).to have_text("Quantity:  2")
     total_price = product.price * 2
     expect(page.body).to have_text(number_to_currency(total_price))
   end

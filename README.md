@@ -32,6 +32,8 @@ purchase. (Payment and Authentication is not included).
 #### How to run Test
 1. Follow step `1 - 5` above in setting up the app.
 2. run `rspec` command at the root directory in the console.
+3. Ensure you have chrome browser when running test.
+4. if there is a flaky failing test, run `rails db:test:prepare` and run rspec again
 
 #### How to use the application (quick look)
 After setting up  the app and running the server,

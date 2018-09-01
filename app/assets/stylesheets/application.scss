@@ -26,3 +26,16 @@ body {
 .spaced {
   margin-bottom: 30px;
 }
+
+#flash-message {
+  z-index: 1000;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
+
+.message-holder {
+  padding: 10px;
+  background-color: #fff;
+  display: inline;
+}

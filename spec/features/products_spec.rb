@@ -15,6 +15,7 @@ RSpec.describe "Products" do
     expect(current_path).to eq "/"
     wait_for_ajax
     wait_for_ajax
+    sleep 5
     expect(page.body).to have_text "Test"
     expect(page.body).to have_text "Foo Bar"
     expect(page.body).to have_text number_to_currency(20.20)
