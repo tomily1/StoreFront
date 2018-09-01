@@ -3,7 +3,7 @@ class UserOrdersController < ApplicationController
     user_order = UserOrder.find_by_id(params[:id])
     shipping = DeliveryMethod.where(name: params[:name]).first
     return if shipping.nil?
-    user_order.update(delivery_method_id: shipping.id)
+    user_order.update(delivery_method_id: shipping.id, session_id: current_user)
     redirect_to carts_path
   end
 

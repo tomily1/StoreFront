@@ -22,7 +22,8 @@
               = link_to("Remove Item", cart_path(cart.id), method: :delete, remote: true)
     .card
       .card-body
-        h4 Select shipping method
+        label(for="name")
+          h5 Select shipping method
         .form
           = form_with url: user_order_path(cart.id), method: :put, remote: true do |form|
             .form-group
